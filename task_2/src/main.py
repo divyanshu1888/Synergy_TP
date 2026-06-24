@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 
-# Import all our functions from analyzer.py
+# Import from analyzer.py
 from analyzer import (
     read_submissions,
     get_submitted_students,
@@ -34,7 +34,7 @@ def main():
         print("Could not load data. Please check the input file.")
         return
 
-    # Step 3: Calculate all the required values
+    # Step 3: Calculating all the required values
     
     # Total number of students
     total_students = len(df)
