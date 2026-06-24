@@ -1,0 +1,15 @@
+{
+    "total_students": 7,
+    "submitted_count": 5,
+    "missing_submissions": [
+        "Kabir",
+        "Dev"
+    ],
+    "average_score": 4.86,
+    "domain_wise_average": {
+        "ML": 5.0,
+        "Web": 5.0,
+        "Electronics": 9.0,
+        "Mechanical": 0.0
+    }
+}
