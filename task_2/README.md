@@ -15,11 +15,13 @@ git clone https://github.com/divyanshu1888/Synergy_TP.git
 
 cd Synergy_TP
 
-### 2. Install requirements
+### 2. Install requirements and creating a virtual environment
+
+python -m venv venv
+venv\Scripts\activate
 
 cd task_2
-
-pip install -r requirements.txt
+pip install -r task_2/requirements.txt
 
 ## Run the Python program
 
