@@ -21,7 +21,7 @@ python -m venv venv
 venv\Scripts\activate
 
 cd task_2
-pip install -r task_2/requirements.txt
+pip install -r requirements.txt
 
 ## Run the Python program
 
