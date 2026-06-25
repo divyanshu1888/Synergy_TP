@@ -12,7 +12,11 @@ def read_submissions(file_path: str) -> pd.DataFrame:
         return pd.DataFrame()  # Return an empty table if file is missing
 
     # Read the CSV file into a pandas DataFrame (like a table)
-    df = pd.read_csv(file_path)
+    try:
+        df = pd.read_csv(file_path)
+    except pd.errors.EmptyDataError:
+        print("Error: The CSV file is empty.")
+        return pd.DataFrame()
 
     # Check if the file was empty
     if df.empty:
@@ -27,9 +31,7 @@ def read_submissions(file_path: str) -> pd.DataFrame:
     return df
 
 
-# -----------------------------------------------------------
 # Function 2: Get only the students who submitted
-# -----------------------------------------------------------
 def get_submitted_students(df: pd.DataFrame) -> pd.DataFrame:
     # Filter rows where the "submitted" column says "yes"
     submitted = df[df["submitted"] == "yes"]
@@ -58,7 +60,7 @@ def get_domain_wise_average(df: pd.DataFrame) -> dict:
     # Create an empty dictionary to store results
     domain_averages = {}
 
-    # Go through each domain one by one
+    # Go through each domain
     for domain in all_domains:
         # Filter rows that belong to this domain
         domain_rows = df[df["domain"] == domain]
@@ -66,7 +68,7 @@ def get_domain_wise_average(df: pd.DataFrame) -> dict:
         # Get the scores as a numpy array
         scores = domain_rows["score"].values
 
-        # Calculate average using numpy
+        # Calculate average
         avg = np.mean(scores)
 
         # Save it in the dictionary, rounded to 2 decimal places
