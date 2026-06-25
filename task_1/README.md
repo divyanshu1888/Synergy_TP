@@ -1,8 +1,8 @@
-\# Task 1: GitHub, Virtual Environment, and Linux Basics
+# Task 1: GitHub, Virtual Environment, and Linux Basics
 
 
 
-\## Description
+## Description
 
 This folder contains the setup for Task 1 of the Synergy\_TP project.
 
@@ -12,19 +12,17 @@ packages, and use basic Linux commands.
 
 
 
-\## Setup Instructions
+## Setup Instructions
 
 
-
-\### 1. Clone the repository
+### 1. Clone the repository
 
 git clone https://github.com/divyanshu1888/Synergy\_TP.git
 
 cd Synergy\_TP
 
 
-
-\### 2. Create and activate virtual environment
+### 2. Create and activate virtual environment
 
 cd task\_1
 
@@ -33,14 +31,13 @@ python -m venv venv
 venv\\Scripts\\activate
 
 
-
-\### 3. Install requirements
+### 3. Install requirements
 
 pip install -r requirements.txt
 
 
 
-\## Run the Python script
+## Run the Python script
 
 python task\_1/src/hello.py
 
