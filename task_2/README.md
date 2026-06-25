@@ -27,18 +27,6 @@ From the Synergy_TP root directory:
 
 python task_2/src/main.py task_2/data/submissions.csv task_2/output/summary.json
 
-## Folder structure
-task_2/
-    README.md
-    requirements.txt
-    data/
-        submissions.csv      
-     output/
-        summary.json          
-    src/
-         analyzer.py           
-         main.py               
-         
 ## Output
 
 The program reads student submission data from
