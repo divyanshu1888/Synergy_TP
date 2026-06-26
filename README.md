@@ -12,6 +12,8 @@ This repository contains my task phase assignments for the Synergy program.
 
 \- task\_2/ - Python Recap Assignment
 
+\- task\_3/ - Manual CSV Parser and Pandas Comparison
+
 
 
 \## Author
