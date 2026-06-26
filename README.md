@@ -1,4 +1,4 @@
-\# Synergy\_TP
+# Synergy\_TP
 
 
 
@@ -6,17 +6,17 @@ This repository contains my task phase assignments for the Synergy program.
 
 
 
-\## Structure
+## Structure
 
-\- task\_1/ - GitHub, Virtual Environment, and Linux Basics
+- task_1 - GitHub, Virtual Environment, and Linux Basics
 
-\- task\_2/ - Python Recap Assignment
+- task_2 - Python Recap Assignment
 
-\- task\_3/ - Manual CSV Parser and Pandas Comparison
+- task_3 - Manual CSV Parser and Pandas Comparison
 
 
 
-\## Author
+## Author
 
 GitHub: divyanshu1888
 
