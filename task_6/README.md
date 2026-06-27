@@ -1,60 +1,76 @@
-# Task 6: Conceptual Report on Topics Covered So Far
+\# Task 6 - Conceptual Report
 
-## Objective
 
-This folder contains the conceptual report required by Task 6. The report
-covers the theoretical background behind Tasks 1 to 5 of the Software/ML
-domain taskphase — version control and environment setup, core Python
-constructs, manual vs. pandas CSV parsing, data cleaning, and Matplotlib
-visualization — explained in terms of concepts, reasoning, and decisions
-rather than as a walkthrough of the submitted code.
 
-## Folder Structure
+\## Overview
 
-```
-task_6/
-  README.md
-  report/
-    Software_ML_Taskphase_Report.docx
-    Software_ML_Taskphase_Report.pdf
-  assets/
-    figures_or_tables_used_in_report/
-      workflow_diagram.png
-```
+This task contains a conceptual report covering the theoretical foundations of Tasks 1 to 5 completed during the Software/ML Domain Taskphase.
 
-## Report Contents
 
-- Title Page — report title, participant name, student ID, domain,
-  repository link, submission date
-- Abstract
-- Introduction (with a summary table of Tasks 1–5 and the main concept
-  learned from each)
-- Development Environment and Version Control
-- Python and File Handling Concepts
-- CSV Parsing and Pandas
-- Data Cleaning (with an optional table mapping each data issue found in
-  Task 4 to the cleaning rule applied to it)
-- Visualization (with the required workflow diagram showing raw CSV →
-  cleaned data → plots)
-- Conclusion
-- References
 
-## Formatting
+\## Participant
 
-A4 page size, 1 inch margins, Times New Roman 12 pt justified body text
-at 1.5 line spacing, 16 pt bold left-aligned main headings, centered
-page numbers starting from the first content page (the title page is
-unnumbered). Total length is 4–6 content pages, excluding the title page
-and references.
+\- \*\*Name:\*\* Penta Divyanshu
 
-## Assets
+\- \*\*ID:\*\* 251090051426
 
-`assets/figures_or_tables_used_in_report/workflow_diagram.png` is the
-source image for the workflow diagram embedded as Figure 1 in the report.
 
-## Notes
 
-This report is a written/typeset deliverable rather than a script output,
-so there is no run command for it. It was authored to satisfy the
-formatting and content requirements in the taskphase document and
-exported directly to PDF and DOCX.
+\## Report Contents
+
+The report covers the following topics:
+
+\- Development environment setup using Git, GitHub, and virtual environments
+
+\- Python fundamentals including functions, file I/O, and exception handling
+
+\- CSV parsing using both manual file I/O and pandas
+
+\- Data cleaning techniques for real-world datasets
+
+\- Data visualization using matplotlib
+
+
+
+\## Folder Structure
+
+task\_6/
+
+
+
+├── report/
+
+
+
+│   ├── Software\_ML\_Taskphase\_Report.docx
+
+
+
+│   └── Software\_ML\_Taskphase\_Report.pdf
+
+
+
+├── assets/
+
+
+
+│   └── figures\_or\_tables\_used\_in\_report/
+
+
+
+├── generate\_report.py
+
+
+
+└── README.md
+
+
+
+\## How the Report Was Generated
+
+The DOCX was generated using Python and the python-docx library by running:
+
+python generate\_report.py
+
+The PDF was exported from the DOCX using Microsoft Word.
+
