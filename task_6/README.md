@@ -1,40 +1,40 @@
-\# Task 6 - Conceptual Report
+# Task 6 - Conceptual Report
 
 
 
-\## Overview
+## Overview
 
 This task contains a conceptual report covering the theoretical foundations of Tasks 1 to 5 completed during the Software/ML Domain Taskphase.
 
 
 
-\## Participant
+## Participant
 
-\- \*\*Name:\*\* Penta Divyanshu
+- **Name:** Penta Divyanshu
 
-\- \*\*ID:\*\* 251090051426
+- **ID:** 251090051426
 
 
 
-\## Report Contents
+## Report Contents
 
 The report covers the following topics:
 
-\- Development environment setup using Git, GitHub, and virtual environments
+- Development environment setup using Git, GitHub, and virtual environments
 
-\- Python fundamentals including functions, file I/O, and exception handling
+- Python fundamentals including functions, file I/O, and exception handling
 
-\- CSV parsing using both manual file I/O and pandas
+- CSV parsing using both manual file I/O and pandas
 
-\- Data cleaning techniques for real-world datasets
+- Data cleaning techniques for real-world datasets
 
-\- Data visualization using matplotlib
+- Data visualization using matplotlib
 
 
 
-\## Folder Structure
+## Folder Structure
 
-task\_6/
+task_6
 
 
 
@@ -66,7 +66,7 @@ task\_6/
 
 
 
-\## How the Report Was Generated
+## How the Report Was Generated
 
 The DOCX was generated using Python and the python-docx library by running:
 
