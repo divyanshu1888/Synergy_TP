@@ -1,0 +1,35 @@
+{
+    "total_students": 10,
+    "duplicate_rows": 0,
+    "missing_values": {
+        "student_id": 0,
+        "name": 0,
+        "domain": 0,
+        "attendance_percent": 0,
+        "score": 0,
+        "study_hours": 0,
+        "height": 0,
+        "weight": 1,
+        "submitted": 0,
+        "height_cm": 0,
+        "weight_kg": 0
+    },
+    "average_attendance": 86.6,
+    "average_score": 5.8,
+    "highest_score": 10.0,
+    "lowest_score": 0.0,
+    "submitted_students": 7,
+    "not_submitted": 3,
+    "students_per_domain": {
+        "ML": 4,
+        "Web": 3,
+        "Electronics": 2,
+        "Mechanical": 1
+    },
+    "average_score_by_domain": {
+        "Electronics": 8.0,
+        "ML": 6.25,
+        "Mechanical": 0.0,
+        "Web": 5.67
+    }
+}
