@@ -1,11 +1,5 @@
 """
-manual_parser.py
-
 A CSV parser built by hand using only Python's built-in file I/O.
-
-Restrictions (per task spec):
-    - pandas is NOT used anywhere in this file.
-    - the built-in csv module is NOT used anywhere in this file.
 
 This parser only needs to support simple comma-separated data with a
 single header row. Quoted commas and multi-line fields are explicitly
@@ -58,8 +52,6 @@ def read_csv_manual(file_path: str) -> List[Dict]:
 
         values = [value.strip() for value in line.split(",")]
 
-        # Malformed row: number of values does not match number of
-        # header columns. Skip it (and log why) instead of crashing.
         if len(values) != len(header):
             print(
                 f"[manual_parser] Skipping malformed row at line "

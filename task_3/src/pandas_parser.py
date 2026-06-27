@@ -66,7 +66,6 @@ def calculate_summary_pandas(df: pd.DataFrame) -> Dict:
         }
 
     # Convert numpy types (int64/float64) to native Python types so the
-    # result is JSON-serializable.
     domain_average_score = {
         str(domain): float(avg)
         for domain, avg in df.groupby("domain")["score"].mean().round(2).items()
