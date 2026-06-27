@@ -1,4 +1,4 @@
-\# Synergy\\\_TP
+# Synergy_TP
 
 
 
