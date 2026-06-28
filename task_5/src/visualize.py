@@ -3,13 +3,10 @@ import matplotlib.pyplot as plt
 
 
 def load_cleaned_data(file_path):
-    """Load the cleaned CSV dataset."""
     return pd.read_csv(file_path)
 
 
 def plot_domain_average_score(df, output_path):
-    """Generate bar chart for average score by domain."""
-
     averages = df.groupby("domain")["score"].mean()
 
     plt.figure(figsize=(6, 4))
@@ -25,8 +22,6 @@ def plot_domain_average_score(df, output_path):
 
 
 def plot_attendance_vs_score(df, output_path):
-    """Generate scatter plot for attendance vs score."""
-
     plt.figure(figsize=(6, 4))
 
     plt.scatter(
@@ -44,7 +39,6 @@ def plot_attendance_vs_score(df, output_path):
 
 
 def plot_submission_status_count(df, output_path):
-    """Generate submission count bar chart."""
 
     counts = df["submitted"].value_counts()
 
@@ -62,7 +56,6 @@ def plot_submission_status_count(df, output_path):
 
 
 def write_plot_summary(output_path):
-    """Write explanation of generated plots."""
 
     summary = """
 # Plot Summary
