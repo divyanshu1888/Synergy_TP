@@ -1,8 +1,8 @@
-\# Task 4 - Messy CSV Cleaning
+# Task 4 - Messy CSV Cleaning
 
 
 
-\## Objective
+## Objective
 
 
 
@@ -10,15 +10,15 @@ The objective of this task is to clean a messy CSV dataset using Python and pand
 
 
 
-\---
+---
 
 
 
-\## Folder Structure
+## Folder Structure
 
 
 
-task\_4/
+task_4
 
 │
 
@@ -30,21 +30,21 @@ task\_4/
 
 ├── output/
 
-│   ├── cleaned\_students.csv
+│   ├── cleaned_students.csv
 
-│   ├── summary\_before.json
+│   ├── summary_before.json
 
-│   ├── summary\_after.json
+│   ├── summary_after.json
 
-│   └── cleaning\_report.md
+│   └── cleaning_report.md
 
 │
 
 ├── src/
 
-│   ├── clean\_data.py
+│   ├── clean_data.py
 
-│   ├── validate\_data.py
+│   ├── validate_data.py
 
 │   └── main.py
 
@@ -54,17 +54,17 @@ task\_4/
 
 
 
-\---
+---
 
 
 
-\## Required Packages
+## Required Packages
 
 
 
-\- Python 3.x
+- Python 3.x
 
-\- pandas
+- pandas
 
 
 
@@ -76,11 +76,11 @@ pip install pandas
 
 
 
-\---
+---
 
 
 
-\## Setup Instructions
+## Setup Instructions
 
 
 
@@ -92,15 +92,14 @@ Make sure the input dataset exists at:
 
 
 
-task\_4/data/messy\_students.csv
+task_4/data/messy_students.csv
 
 
 
-\---
+---
 
 
-
-\## Run Command
+## Run Command
 
 
 
@@ -112,11 +111,11 @@ python task\_4/src/main.py task\_4/data/messy\_students.csv task\_4/output/clean
 
 
 
-\---
+---
 
 
 
-\## Expected Output Files
+## Expected Output Files
 
 
 
@@ -124,21 +123,21 @@ After execution, the following files are generated:
 
 
 
-\- cleaned\_students.csv
+- cleaned_students.csv
 
-\- summary\_before.json
+- summary_before.json
 
-\- summary\_after.json
+- summary_after.json
 
-\- cleaning\_report.md
-
-
-
-\---
+- cleaning_report.md
 
 
 
-\## Cleaning Logic
+---
+
+
+
+## Cleaning Logic
 
 
 
@@ -146,33 +145,33 @@ The program performs the following operations:
 
 
 
-\- Removes duplicate records
+- Removes duplicate records
 
-\- Standardizes domain names
+- Standardizes domain names
 
-\- Converts attendance percentages into numeric values
+- Converts attendance percentages into numeric values
 
-\- Converts textual scores into numeric values
+- Converts textual scores into numeric values
 
-\- Converts study hours into numeric values
+- Converts study hours into numeric values
 
-\- Converts height into centimeters
+- Converts height into centimeters
 
-\- Converts weight into kilograms
+- Converts weight into kilograms
 
-\- Standardizes submitted values
+- Standardizes submitted values
 
-\- Handles missing values using median imputation
+- Handles missing values using median imputation
 
-\- Validates the cleaned dataset before saving
-
-
-
-\---
+- Validates the cleaned dataset before saving
 
 
 
-\## Validation Rules
+---
+
+
+
+## Validation Rules
 
 
 
@@ -180,21 +179,21 @@ The cleaned dataset satisfies the following conditions:
 
 
 
-\- No duplicate student IDs
+- No duplicate student IDs
 
-\- Attendance between 0 and 100
+- Attendance between 0 and 100
 
-\- Numeric score values
+- Numeric score values
 
-\- Numeric study hours
+- Numeric study hours
 
-\- Numeric height values
+- Numeric height values
 
-\- Numeric weight values
+- Numeric weight values
 
-\- Standardized domains
+- Standardized domains
 
-\- Standardized submission status
+- Standardized submission status
 
-\- No missing values in critical columns
+- No missing values in critical columns
 
