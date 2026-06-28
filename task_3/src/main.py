@@ -1,130 +1,64 @@
-"""
-main.py
-
-Entry point for Task 3.
-
-Run from the repository root:
-    python task_3/src/main.py task_3/data/submissions.csv
-
-This script:
-    1. Runs the manual parser on the given CSV and writes
-       task_3/output/manual_summary.json
-    2. Runs the pandas parser on the same CSV and writes
-       task_3/output/pandas_summary.json
-    3. Compares both summaries field-by-field and writes
-       task_3/output/comparison_report.md
-"""
-
-import os
+import json
 import sys
 
-# Make sure manual_parser.py and pandas_parser.py (in the same folder
-# as this file) can be imported regardless of the working directory
-# this script is launched from.
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# We need to tell Python where to find our other files
+sys.path.insert(0, "task_3/src")
 
-from manual_parser import (
-    read_csv_manual,
-    convert_types,
-    calculate_summary as calculate_summary_manual,
-    write_json as write_json_manual,
-)
-from pandas_parser import (
-    read_csv_pandas,
-    calculate_summary_pandas,
-    write_json as write_json_pandas,
-)
-
-OUTPUT_DIR = os.path.join("task_3", "output")
+#Importing files from each of the parser
+from manual_parser import read_csv_manual, convert_types, calculate_summary, write_json
+from pandas_parser import read_csv_pandas, calculate_summary_pandas, write_json as write_json_pandas
 
 
-def run_manual(csv_path: str) -> dict:
-    raw_rows = read_csv_manual(csv_path)
-    typed_rows = convert_types(raw_rows)
-    summary = calculate_summary_manual(typed_rows)
-    write_json_manual(summary, os.path.join(OUTPUT_DIR, "manual_summary.json"))
-    return summary
+def write_comparison_report(manual_summary, pandas_summary, report_path):
+    lines = ["# Comparison Report: Manual Parser vs Pandas\n\n"]
 
+    all_match = True
+    for key in manual_summary:
+        m_val = manual_summary[key]
+        p_val = pandas_summary.get(key)
+        match = "MATCH" if m_val == p_val else "MISMATCH"
+        if m_val != p_val:
+            all_match = False
+        lines.append(f"## {key}\n")
+        lines.append(f"- Manual : {m_val}\n")
+        lines.append(f"- Pandas : {p_val}\n")
+        lines.append(f"- Result : {match}\n\n")
 
-def run_pandas(csv_path: str) -> dict:
-    df = read_csv_pandas(csv_path)
-    summary = calculate_summary_pandas(df)
-    write_json_pandas(summary, os.path.join(OUTPUT_DIR, "pandas_summary.json"))
-    return summary
-
-
-def write_comparison_report(
-    manual_summary: dict, pandas_summary: dict, report_path: str
-) -> None:
-    """Write a Markdown report comparing the two summaries field-by-field."""
-    keys = list(manual_summary.keys())
-    mismatches = [k for k in keys if manual_summary[k] != pandas_summary[k]]
-
-    lines = []
-    lines.append("# Comparison Report: Manual Parser vs Pandas")
-    lines.append("")
-    lines.append(
-        "This report compares the summary produced by the hand-written "
-        "CSV parser (`manual_parser.py`) against the summary produced "
-        "by pandas (`pandas_parser.py`) for the same input file, "
-        "`task_3/data/submissions.csv`."
-    )
-    lines.append("")
-    lines.append("## Field-by-field comparison")
-    lines.append("")
-    lines.append("| Field | Manual Parser | Pandas | Match |")
-    lines.append("| --- | --- | --- | --- |")
-    for k in keys:
-        match = "Yes" if k not in mismatches else "No"
-        lines.append(f"| {k} | {manual_summary[k]} | {pandas_summary[k]} | {match} |")
-    lines.append("")
-
-    lines.append("## Conclusion")
-    lines.append("")
-    if not mismatches:
-        lines.append(
-            "Both the manual parser and pandas produced identical results "
-            "for every field in the summary. This confirms that the "
-            "hand-written CSV reading, type conversion, and aggregation "
-            "logic behaves equivalently to pandas' built-in CSV loading "
-            "and groupby/aggregation functions for this dataset."
-        )
+    if all_match:
+        lines.append("## Conclusion\nBoth parsers produced identical results.\n")
     else:
-        lines.append(
-            "The following fields differed between the manual parser "
-            f"and pandas: {', '.join(mismatches)}. A difference here "
-            "usually points to a discrepancy in type conversion, "
-            "rounding, or string normalization between the two "
-            "implementations, and should be investigated before "
-            "trusting either summary."
-        )
+        lines.append("## Conclusion\nThere are some differences between the two parsers. Review above.\n")
 
     with open(report_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
+        f.writelines(lines)
+    print(f"Saved: {report_path}")
 
+#Main Function
+def main():
+    input_path = sys.argv[1]
 
-def main() -> None:
-    if len(sys.argv) < 2:
-        print("Usage: python task_3/src/main.py <path_to_csv>")
-        sys.exit(1)
+    # Manual Parser
+    print("\n--- Running Manual Parser ---")
+    raw_rows = read_csv_manual(input_path)
+    rows = convert_types(raw_rows)
+    manual_summary = calculate_summary(rows)
+    write_json(manual_summary, "task_3/output/manual_summary.json")
 
-    csv_path = sys.argv[1]
+    # Pandas Parser
+    print("\n--- Running Pandas Parser ---")
+    df = read_csv_pandas(input_path)
+    pandas_summary = calculate_summary_pandas(df)
+    write_json_pandas(pandas_summary, "task_3/output/pandas_summary.json")
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-    manual_summary = run_manual(csv_path)
-    pandas_summary = run_pandas(csv_path)
-
+    # Comparison Report
+    print("\n--- Writing Comparison Report ---")
     write_comparison_report(
         manual_summary,
         pandas_summary,
-        os.path.join(OUTPUT_DIR, "comparison_report.md"),
+        "task_3/output/comparison_report.md"
     )
 
-    print("Task 3 complete. Outputs written to:")
-    print(f"  - {os.path.join(OUTPUT_DIR, 'manual_summary.json')}")
-    print(f"  - {os.path.join(OUTPUT_DIR, 'pandas_summary.json')}")
-    print(f"  - {os.path.join(OUTPUT_DIR, 'comparison_report.md')}")
+    print("\nAll done!")
 
 
 if __name__ == "__main__":
