@@ -22,21 +22,21 @@ def main():
 
         plot_domain_average_score(
             df,
-            f"{output_folder}/domain_average_score.png",
+            output_folder + "/domain_average_score.png",
         )
 
         plot_attendance_vs_score(
             df,
-            f"{output_folder}/attendance_vs_score.png",
+            output_folder + "/attendance_vs_score.png",
         )
 
         plot_submission_status_count(
             df,
-            f"{output_folder}/submission_status_count.png",
+            output_folder + "/submission_status_count.png",
         )
 
         write_plot_summary(
-            f"{output_folder}/plot_summary.md"
+            output_folder + "/plot_summary.md"
         )
 
         print("Task 5 completed successfully!")
@@ -45,7 +45,7 @@ def main():
         print("Error: Input file not found.")
 
     except Exception as e:
-        print(f"Unexpected Error: {e}")
+        print("Unexpected Error:", e)
 
 
 if __name__ == "__main__":
