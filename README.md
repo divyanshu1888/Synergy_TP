@@ -20,7 +20,7 @@ This repository contains my task phase assignments for the Synergy program.
 
 
 
-## Author: Penta Divyanshu
+### Author: Penta Divyanshu
 ### GitHub: divyanshu1888
 
 
