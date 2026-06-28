@@ -1,172 +1,88 @@
-"""
-A CSV parser built by hand using only Python's built-in file I/O.
-
-This parser only needs to support simple comma-separated data with a
-single header row. Quoted commas and multi-line fields are explicitly
-out of scope for this task.
-"""
-
 import json
-from typing import List, Dict
 
 
-def read_csv_manual(file_path: str) -> List[Dict]:
-    """
-    Read a CSV file by hand and turn it into a list of dictionaries.
-
-    Steps:
-        1. Open the file with a context manager so it is always closed.
-        2. Read the first line as the header and split it on commas.
-        3. Iterate over the remaining lines, split each on commas, and
-           zip the values with the header to build one dict per row.
-        4. Skip blank lines.
-        5. Skip "malformed" rows -- rows whose number of comma-separated
-           values does not match the number of header columns -- instead
-           of letting the program crash.
-
-    Args:
-        file_path: Path to the CSV file to read.
-
-    Returns:
-        A list of dictionaries (one per valid row). All values are kept
-        as raw strings at this stage; numeric/boolean conversion happens
-        later in convert_types().
-    """
-    rows: List[Dict] = []
-
-    with open(file_path, "r", encoding="utf-8") as f:
+def read_csv_manual(file_path: str) -> list:
+    rows = []
+    with open(file_path, "r") as f:
         lines = f.readlines()
 
     if not lines:
         return rows
+    header = lines[0].strip().split(",")
 
-    header_line = lines[0].strip()
-    header = [column.strip() for column in header_line.split(",")]
+    for line in lines[1:]:
+        line = line.strip()
 
-    for line_number, raw_line in enumerate(lines[1:], start=2):
-        line = raw_line.strip()
-
-        # Skip empty lines without crashing.
+        # Skips empty lines
         if not line:
             continue
-
-        values = [value.strip() for value in line.split(",")]
-
+        values = line.split(",")
+        
         if len(values) != len(header):
-            print(
-                f"[manual_parser] Skipping malformed row at line "
-                f"{line_number}: {raw_line!r} "
-                f"(expected {len(header)} fields, got {len(values)})"
-            )
+            print(f"Skipping malformed row: {line}")
             continue
+            
+        row = {}
+        for i in range(len(header)):
+            row[header[i]] = values[i]
 
-        row = dict(zip(header, values))
         rows.append(row)
 
     return rows
 
-
-def convert_types(rows: List[Dict]) -> List[Dict]:
-    """
-    Convert raw string fields into the proper Python types.
-
-        - "score"     -> int
-        - "submitted" -> bool (True for yes/y/true/1, case-insensitive;
-                                False otherwise)
-
-    A row whose score cannot be converted to an int is treated as
-    malformed and is skipped (with a message) rather than crashing the
-    whole program.
-
-    Args:
-        rows: Output of read_csv_manual() -- list of dicts with string
-              values.
-
-    Returns:
-        A new list of dicts with "score" as int and "submitted" as bool.
-        The original list is not mutated.
-    """
-    converted: List[Dict] = []
-
+def convert_types(rows: list) -> list:
+    converted = []
     for row in rows:
-        new_row = dict(row)  # shallow copy, don't mutate the input
-
+        new_row = dict(row) 
+        # Converts score to integer
         try:
             new_row["score"] = int(row["score"])
-        except (KeyError, ValueError):
-            print(f"[manual_parser] Skipping row with invalid score: {row}")
-            continue
+        except ValueError:
+            new_row["score"] = 0
 
-        submitted_raw = str(row.get("submitted", "")).strip().lower()
-        new_row["submitted"] = submitted_raw in ("yes", "y", "true", "1")
+        submitted_val = row["submitted"].strip().lower()
+        new_row["submitted"] = "yes" if submitted_val == "yes" else "no"
 
         converted.append(new_row)
-
     return converted
 
+def calculate_summary(rows: list) -> dict:
+    total = len(rows)
+    submitted = [r for r in rows if r["submitted"] == "yes"]
+    not_submitted = [r for r in rows if r["submitted"] == "no"]
 
-def calculate_summary(rows: List[Dict]) -> Dict:
-    """
-    Compute the summary statistics required by the task spec.
+    scores_all = [r["score"] for r in rows]
+    scores_submitted = [r["score"] for r in submitted]
 
-    Expects each row to already have "score" as int and "submitted"
-    as bool (i.e. rows should already have been through convert_types).
+    average_score = round(sum(scores_all) / total, 2) if total > 0 else 0
 
-    Returns a dict with:
-        total_students, num_submitted, num_missing_submissions,
-        average_score, highest_scorer, lowest_scorer_submitted,
-        domain_average_score, students_not_submitted, students_below_5
-    """
-    total_students = len(rows)
+    highest = max(rows, key=lambda r: r["score"])
+    lowest_submitted = min(submitted, key=lambda r: r["score"]) if submitted else None
 
-    submitted_rows = [r for r in rows if r["submitted"]]
-    not_submitted_rows = [r for r in rows if not r["submitted"]]
-
-    average_score = (
-        round(sum(r["score"] for r in rows) / total_students, 2)
-        if total_students
-        else 0
-    )
-
-    highest_scorer = None
-    if rows:
-        top_row = max(rows, key=lambda r: r["score"])
-        highest_scorer = {"name": top_row["name"], "score": top_row["score"]}
-
-    lowest_scorer_submitted = None
-    if submitted_rows:
-        low_row = min(submitted_rows, key=lambda r: r["score"])
-        lowest_scorer_submitted = {
-            "name": low_row["name"],
-            "score": low_row["score"],
-        }
-
-    domain_totals: Dict[str, List[int]] = {}
+    # Domain-wise average score
+    domain_scores = {}
     for r in rows:
-        domain_totals.setdefault(r["domain"], []).append(r["score"])
+        d = r["domain"]
+        if d not in domain_scores:
+            domain_scores[d] = []
+        domain_scores[d].append(r["score"])
 
-    domain_average_score = {
-        domain: round(sum(scores) / len(scores), 2)
-        for domain, scores in domain_totals.items()
-    }
-
-    students_not_submitted = [r["name"] for r in not_submitted_rows]
-    students_below_5 = [r["name"] for r in rows if r["score"] < 5]
+    domain_average = {d: round(sum(v) / len(v), 2) for d, v in domain_scores.items()}
 
     return {
-        "total_students": total_students,
-        "num_submitted": len(submitted_rows),
-        "num_missing_submissions": len(not_submitted_rows),
+        "total_students": total,
+        "submitted_count": len(submitted),
+        "missing_submissions": len(not_submitted),
         "average_score": average_score,
-        "highest_scorer": highest_scorer,
-        "lowest_scorer_submitted": lowest_scorer_submitted,
-        "domain_average_score": domain_average_score,
-        "students_not_submitted": students_not_submitted,
-        "students_below_5": students_below_5,
+        "highest_scorer": highest["name"],
+        "lowest_scorer_among_submitted": lowest_submitted["name"] if lowest_submitted else None,
+        "domain_wise_average_score": domain_average,
+        "students_who_did_not_submit": [r["name"] for r in not_submitted],
+        "students_scoring_below_5": [r["name"] for r in rows if r["score"] < 5]
     }
 
 
-def write_json(data: Dict, output_path: str) -> None:
-    """Write a dictionary to disk as a pretty-printed JSON file."""
-    with open(output_path, "w", encoding="utf-8") as f:
+def write_json(data: dict, output_path: str) -> None:
+    with open(output_path, "w") as f:
         json.dump(data, f, indent=2)
+    print(f"Saved: {output_path}")
