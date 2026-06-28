@@ -1,27 +1,21 @@
 {
   "total_students": 7,
-  "num_submitted": 5,
-  "num_missing_submissions": 2,
+  "submitted_count": 5,
+  "missing_submissions": 2,
   "average_score": 4.86,
-  "highest_scorer": {
-    "name": "Isha",
-    "score": 9
-  },
-  "lowest_scorer_submitted": {
-    "name": "Rohan",
-    "score": 4
-  },
-  "domain_average_score": {
+  "highest_scorer": "Isha",
+  "lowest_scorer_among_submitted": "Rohan",
+  "domain_wise_average_score": {
     "ML": 5.0,
     "Web": 5.0,
     "Electronics": 9.0,
     "Mechanical": 0.0
   },
-  "students_not_submitted": [
+  "students_who_did_not_submit": [
     "Kabir",
     "Dev"
   ],
-  "students_below_5": [
+  "students_scoring_below_5": [
     "Kabir",
     "Rohan",
     "Dev"
