@@ -1,71 +1,39 @@
 import json
-from typing import Dict
-
 import pandas as pd
 
-
-def read_csv_pandas(file_path: str) -> pd.DataFrame:
+def read_csv_pandas(file_path: str):
     df = pd.read_csv(file_path)
-
-    df["score"] = df["score"].astype(int)
-    df["submitted"] = (
-        df["submitted"]
-        .astype(str)
-        .str.strip()
-        .str.lower()
-        .isin(["yes", "y", "true", "1"])
-    )
-
     return df
 
+def calculate_summary_pandas(df) -> dict:
+    total = len(df)
+    submitted = df[df["submitted"].str.lower() == "yes"]
+    not_submitted = df[df["submitted"].str.lower() == "no"]
 
-def calculate_summary_pandas(df: pd.DataFrame) -> Dict:
-    total_students = int(len(df))
+    average_score = round(df["score"].mean(), 2)
+    highest = df.loc[df["score"].idxmax(), "name"]
+    lowest_submitted = submitted.loc[submitted["score"].idxmin(), "name"] if not submitted.empty else None
 
-    submitted_df = df[df["submitted"]]
-    not_submitted_df = df[~df["submitted"]]
-
-    average_score = (
-        round(float(df["score"].mean()), 2) if total_students else 0
+    domain_average = (
+        df.groupby("domain")["score"]
+        .mean()
+        .round(2)
+        .to_dict()
     )
 
-    highest_scorer = None
-    if total_students:
-        top_row = df.loc[df["score"].idxmax()]
-        highest_scorer = {
-            "name": top_row["name"],
-            "score": int(top_row["score"]),
-        }
-
-    lowest_scorer_submitted = None
-    if not submitted_df.empty:
-        low_row = submitted_df.loc[submitted_df["score"].idxmin()]
-        lowest_scorer_submitted = {
-            "name": low_row["name"],
-            "score": int(low_row["score"]),
-        }
-
-    domain_average_score = {
-        str(domain): float(avg)
-        for domain, avg in df.groupby("domain")["score"].mean().round(2).items()
-    }
-
-    students_not_submitted = not_submitted_df["name"].tolist()
-    students_below_5 = df[df["score"] < 5]["name"].tolist()
-
     return {
-        "total_students": total_students,
-        "num_submitted": int(len(submitted_df)),
-        "num_missing_submissions": int(len(not_submitted_df)),
+        "total_students": total,
+        "submitted_count": int(len(submitted)),
+        "missing_submissions": int(len(not_submitted)),
         "average_score": average_score,
-        "highest_scorer": highest_scorer,
-        "lowest_scorer_submitted": lowest_scorer_submitted,
-        "domain_average_score": domain_average_score,
-        "students_not_submitted": students_not_submitted,
-        "students_below_5": students_below_5,
+        "highest_scorer": highest,
+        "lowest_scorer_among_submitted": lowest_submitted,
+        "domain_wise_average_score": domain_average,
+        "students_who_did_not_submit": not_submitted["name"].tolist(),
+        "students_scoring_below_5": df[df["score"] < 5]["name"].tolist()
     }
 
-
-def write_json(data: Dict, output_path: str) -> None:
-    with open(output_path, "w", encoding="utf-8") as f:
+def write_json(data: dict, output_path: str) -> None:
+    with open(output_path, "w") as f:
         json.dump(data, f, indent=2)
+    print(f"Saved: {output_path}")
