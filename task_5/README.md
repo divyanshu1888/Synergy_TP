@@ -1,8 +1,8 @@
-\# Task 5 – Data Visualization using Matplotlib
+# Task 5 – Data Visualization using Matplotlib
 
 
 
-\## Objective
+## Objective
 
 
 
@@ -10,31 +10,29 @@ The objective of this task is to visualize the cleaned student dataset generated
 
 
 
-\---
+
+
+## Folder Structure
 
 
 
-\## Folder Structure
-
-
-
-task\_5/
+task_5/
 
 │
 
-├── output/
+├── output
 
-│   ├── attendance\_vs\_score.png
+│   ├── attendance_vs_score.png
 
-│   ├── domain\_average\_score.png
+│   ├── domain_average_score.png
 
-│   ├── submission\_status\_count.png
+│   ├── submission_status_count.png
 
-│   └── plot\_summary.md
+│   └── plot_summary.md
 
 │
 
-├── src/
+├── src
 
 │   ├── visualize.py
 
@@ -46,39 +44,27 @@ task\_5/
 
 
 
-\---
+## Required Packages
 
 
 
-\## Required Packages
+- Python 3.x
 
+- pandas
 
-
-\- Python 3.x
-
-\- pandas
-
-\- matplotlib
-
+- matplotlib
 
 
 Install the required packages:
 
 
-
-```bash
-
 pip install pandas matplotlib
 
-```
 
 
 
-\---
 
-
-
-\## Input File
+## Input File
 
 
 
@@ -86,35 +72,20 @@ This task uses the cleaned dataset generated in Task 4.
 
 
 
-```
 
-task\_4/output/cleaned\_students.csv
-
-```
+task_4/output/cleaned_students.csv
 
 
 
-\---
+## Run Command
 
 
 
-\## Run Command
+python task_5/src/main.py task_4/output/cleaned_students.csv task\_5/output
 
 
 
-```bash
-
-python task\_5/src/main.py task\_4/output/cleaned\_students.csv task\_5/output
-
-```
-
-
-
-\---
-
-
-
-\## Generated Output
+## Generated Output
 
 
 
@@ -122,25 +93,22 @@ Running the program creates:
 
 
 
-\- domain\_average\_score.png
+- domain_average_score.png
 
-\- attendance\_vs\_score.png
+- attendance_vs_score.png
 
-\- submission\_status\_count.png
+- submission_status_count.png
 
-\- plot\_summary.md
-
-
-
-\---
+- plot_summary.md
 
 
 
-\## Visualization Details
+
+## Visualization Details
 
 
 
-\### Domain Average Score
+### Domain Average Score
 
 
 
@@ -148,7 +116,7 @@ Displays the average score achieved by students in each domain using a bar chart
 
 
 
-\### Attendance vs Score
+### Attendance vs Score
 
 
 
@@ -156,7 +124,7 @@ Displays the relationship between attendance percentage and score using a scatte
 
 
 
-\### Submission Status Count
+### Submission Status Count
 
 
 
@@ -164,37 +132,33 @@ Displays the number of students who submitted and did not submit the assignment 
 
 
 
-\---
+
+
+## Libraries Used
 
 
 
-\## Libraries Used
+- pandas
+
+- matplotlib.pyplot
 
 
 
-\- pandas
-
-\- matplotlib.pyplot
 
 
-
-\---
+## Features
 
 
 
-\## Features
+- Reads cleaned CSV data
 
+- Generates three plots
 
+- Saves figures automatically
 
-\- Reads cleaned CSV data
+- Uses proper titles and axis labels
 
-\- Generates three plots
+- Uses tight\_layout() for clean formatting
 
-\- Saves figures automatically
-
-\- Uses proper titles and axis labels
-
-\- Uses tight\_layout() for clean formatting
-
-\- Does not require manually opening plot windows
+- Does not require manually opening plot windows
 
