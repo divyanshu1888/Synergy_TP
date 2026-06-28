@@ -10,9 +10,8 @@ This task contains a conceptual report covering the theoretical foundations of T
 
 ## Participant
 
-- **Name:** Penta Divyanshu
-
-- **ID:** 251090051426
+* **Name:** Penta Divyanshu
+* **ID:** 251090051426
 
 
 
@@ -20,21 +19,17 @@ This task contains a conceptual report covering the theoretical foundations of T
 
 The report covers the following topics:
 
-- Development environment setup using Git, GitHub, and virtual environments
-
-- Python fundamentals including functions, file I/O, and exception handling
-
-- CSV parsing using both manual file I/O and pandas
-
-- Data cleaning techniques for real-world datasets
-
-- Data visualization using matplotlib
+* Development environment setup using Git, GitHub, and virtual environments
+* Python fundamentals including functions, file I/O, and exception handling
+* CSV parsing using both manual file I/O and pandas
+* Data cleaning techniques for real-world datasets
+* Data visualization using matplotlib
 
 
 
 ## Folder Structure
 
-task_6
+task\_6
 
 
 
@@ -55,10 +50,6 @@ task_6
 
 
 │   └── figures\_or\_tables\_used\_in\_report/
-
-
-
-├── generate\_report.py
 
 
 
