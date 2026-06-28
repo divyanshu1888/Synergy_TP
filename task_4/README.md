@@ -103,15 +103,9 @@ task_4/data/messy_students.csv
 
 
 
-```bash
-
 python task\_4/src/main.py task\_4/data/messy\_students.csv task\_4/output/cleaned\_students.csv
 
-```
 
-
-
----
 
 
 
@@ -166,8 +160,6 @@ The program performs the following operations:
 - Validates the cleaned dataset before saving
 
 
-
----
 
 
 
