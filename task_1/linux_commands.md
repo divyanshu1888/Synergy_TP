@@ -1,34 +1,34 @@
-\# Linux Commands Documentation
+# Linux Commands Documentation
 
 
 
-\## 1. pwd - Print Working Directory
+## 1. pwd - Print Working Directory
 
-\*\*Command:\*\* pwd
+**Command:** pwd
 
-\*\*What it does:\*\* Shows the current directory path
+**What it does:** Shows the current directory path
 
-\*\*Output:\*\* /c/Users/divya/Synergy\_TP/task\_1
-
-
-
-\## 2. ls - List Files
-
-\*\*Command:\*\* ls
-
-\*\*What it does:\*\* Lists files and folders in current directory
-
-\*\*Output:\*\* data/  linux\_commands.md  requirements.txt  setup\_log.md  src/  venv/
+**Output:** /c/Users/divya/Synergy\_TP/task\_1
 
 
 
-\## 3. ls -la - List All Files with Details
+## 2. ls - List Files
 
-\*\*Command:\*\* ls -la
+**Command:** ls
 
-\*\*What it does:\*\* Lists all files including hidden ones with permissions, size, and date
+**What it does:** Lists files and folders in current directory
 
-\*\*Output:\*\*
+**Output:** data/  linux_commands.md  requirements.txt  setup_log.md  src/  venv/
+
+
+
+## 3. ls -la - List All Files with Details
+
+**Command:** ls -la
+
+**What it does:** Lists all files including hidden ones with permissions, size, and date
+
+**Output:**
 
 total 9
 
@@ -38,11 +38,11 @@ drwxr-xr-x 1 divya 197609   0 Jun 24 14:05 ../
 
 drwxr-xr-x 1 divya 197609   0 Jun 24 14:03 data/
 
-\-rw-r--r-- 1 divya 197609   0 Jun 24 14:07 linux\_commands.md
+-rw-r--r-- 1 divya 197609   0 Jun 24 14:07 linux\_commands.md
 
-\-rw-r--r-- 1 divya 197609  93 Jun 24 13:57 requirements.txt
+-rw-r--r-- 1 divya 197609  93 Jun 24 13:57 requirements.txt
 
-\-rw-r--r-- 1 divya 197609 592 Jun 24 14:06 setup\_log.md
+-rw-r--r-- 1 divya 197609 592 Jun 24 14:06 setup\_log.md
 
 drwxr-xr-x 1 divya 197609   0 Jun 24 14:01 src/
 
@@ -50,159 +50,159 @@ drwxr-xr-x 1 divya 197609   0 Jun 24 13:54 venv/
 
 
 
-\## 4. cd - Change Directory
+## 4. cd - Change Directory
 
-\*\*Command:\*\* cd ..
+**Command:** cd ..
 
-\*\*What it does:\*\* Moves one level up to parent directory
+**What it does:** Moves one level up to parent directory
 
-\*\*Output:\*\* (moved to /c/Users/divya/Synergy\_TP)
-
-
-
-\## 5. mkdir - Make Directory
-
-\*\*Command:\*\* mkdir test\_folder
-
-\*\*What it does:\*\* Creates a new folder
-
-\*\*Output:\*\* (folder created successfully)
+**Output:** (moved to /c/Users/divya/Synergy_TP)
 
 
 
-\## 6. touch - Create Empty File
+## 5. mkdir - Make Directory
 
-\*\*Command:\*\* touch test\_file.txt
+**Command:** mkdir test_folder
 
-\*\*What it does:\*\* Creates an empty file
+**What it does:** Creates a new folder
 
-\*\*Output:\*\* (file created successfully)
+**Output:** (folder created successfully)
 
 
 
-\## 7. cat - Display File Contents
+## 6. touch - Create Empty File
 
-\*\*Command:\*\* cat data/sample.txt
+**Command:** touch test_file.txt
 
-\*\*What it does:\*\* Displays the contents of a file
+**What it does:** Creates an empty file
 
-\*\*Output:\*\*
+**Output:** (file created successfully)
+
+
+
+## 7. cat - Display File Contents
+
+**Command:** cat data/sample.txt
+
+**What it does:** Displays the contents of a file
+
+**Output:**
 
 This is a sample data file for Task 1.
 
 Name: Divyanshu
 
-Project: Synergy\_TP
+Project: Synergy_TP
 
 
 
-\## 8. echo - Print Text
+## 8. echo - Print Text
 
-\*\*Command:\*\* echo "Hello from terminal"
+**Command:** echo "Hello from terminal"
 
-\*\*What it does:\*\* Prints text to the terminal
+**What it does:** Prints text to the terminal
 
-\*\*Output:\*\* Hello from terminal
-
-
-
-\## 9. cp - Copy File
-
-\*\*Command:\*\* cp data/sample.txt data/sample\_copy.txt
-
-\*\*What it does:\*\* Copies a file to a new location
-
-\*\*Output:\*\* (file copied successfully)
+**Output:** Hello from terminal
 
 
 
-\## 10. mv - Move/Rename File
+## 9. cp - Copy File
 
-\*\*Command:\*\* mv data/sample\_copy.txt data/sample\_moved.txt
+**Command:** cp data/sample.txt data/sample_copy.txt
 
-\*\*What it does:\*\* Moves or renames a file
+**What it does:** Copies a file to a new location
 
-\*\*Output:\*\* (file renamed successfully)
-
-
-
-\## 11. rm - Remove File
-
-\*\*Command:\*\* rm data/sample\_moved.txt
-
-\*\*What it does:\*\* Deletes a file permanently
-
-\*\*Output:\*\* (file deleted successfully)
+**Output:** (file copied successfully)
 
 
 
-\## 12. grep - Search Text
+## 10. mv - Move/Rename File
 
-\*\*Command:\*\* grep "sample" data/sample.txt
+**Command:** mv data/sample_copy.txt data/sample_moved.txt
 
-\*\*What it does:\*\* Searches for a pattern inside a file
+**What it does:** Moves or renames a file
 
-\*\*Output:\*\* This is a sample data file for Task 1.
-
-
-
-\## 13. find - Find Files
-
-\*\*Command:\*\* find . -name "\*.py"
-
-\*\*What it does:\*\* Finds files matching a pattern
-
-\*\*Output:\*\* ./src/hello.py
+**Output:** (file renamed successfully)
 
 
 
-\## 14. head - Show First Lines
+## 11. rm - Remove File
 
-\*\*Command:\*\* head data/sample.txt
+**Command:** rm data/sample_moved.txt
 
-\*\*What it does:\*\* Shows the first 10 lines of a file
+**What it does:** Deletes a file permanently
 
-\*\*Output:\*\*
-
-This is a sample data file for Task 1.
-
-Name: Divyanshu
-
-Project: Synergy\_TP
+**Output:** (file deleted successfully)
 
 
 
-\## 15. tail - Show Last Lines
+## 12. grep - Search Text
 
-\*\*Command:\*\* tail data/sample.txt
+**Command:** grep "sample" data/sample.txt
 
-\*\*What it does:\*\* Shows the last 10 lines of a file
+**What it does:** Searches for a pattern inside a file
 
-\*\*Output:\*\*
+**Output:** This is a sample data file for Task 1.
+
+
+
+## 13. find - Find Files
+
+**Command:** find . -name "\*.py"
+
+**What it does:** Finds files matching a pattern
+
+**Output:** ./src/hello.py
+
+
+
+## 14. head - Show First Lines
+
+**Command:** head data/sample.txt
+
+**What it does:** Shows the first 10 lines of a file
+
+**Output:**
 
 This is a sample data file for Task 1.
 
 Name: Divyanshu
 
-Project: Synergy\_TP
+Project: Synergy_TP
 
 
 
-\## 16. wc - Word Count
+## 15. tail - Show Last Lines
 
-\*\*Command:\*\* wc data/sample.txt
+**Command:** tail data/sample.txt
 
-\*\*What it does:\*\* Counts lines, words, and characters in a file
+**What it does:** Shows the last 10 lines of a file
 
-\*\*Output:\*\* 2 13 76 data/sample.txt
+**Output:**
+
+This is a sample data file for Task 1.
+
+Name: Divyanshu
+
+Project: Synergy_TP
 
 
 
-\## 17. chmod - Change Permissions
+## 16. wc - Word Count
 
-\*\*Command:\*\* chmod 755 src/hello.py
+**Command:** wc data/sample.txt
 
-\*\*What it does:\*\* Changes file permissions (7=read+write+execute, 5=read+execute)
+**What it does:** Counts lines, words, and characters in a file
 
-\*\*Output:\*\* (permissions changed successfully)
+**Output:** 2 13 76 data/sample.txt
+
+
+
+## 17. chmod - Change Permissions
+
+**Command:** chmod 755 src/hello.py
+
+**What it does:** Changes file permissions (7=read+write+execute, 5=read+execute)
+
+**Output:** (permissions changed successfully)
 
