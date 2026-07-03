@@ -5,6 +5,10 @@ This task covers descriptive statistics as a way to reason about measurement dat
 center and spread, distribution shape, outliers, plot selection, and why correlation isn't causation. The focus wasn't on memorizing formulas, but
 on understanding what these numbers actually reveal, what they hide, and when a conclusion built on them can be trusted.
 
+**Participant:** Penta Divyanshu
+
+**Roll Number:** 251090051426
+
 ## Learning Resources Used
 - OpenIntro Statistics - numerical summaries, distributions, variability, and association between variables
 - Khan Academy Statistics and Probability - mean, median, standard deviation, IQR, distributions, scatter plots
