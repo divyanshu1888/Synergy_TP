@@ -1,4 +1,4 @@
-# Task 8 — Descriptive Statistics and Technical Interpretation
+# Task 8 - Descriptive Statistics and Technical Interpretation
 
 ## Objective
 This task covers descriptive statistics as a way to reason about measurement data from Biochemistry, Electronics, and Mechanical experiments -
@@ -6,10 +6,10 @@ center and spread, distribution shape, outliers, plot selection, and why correla
 on understanding what these numbers actually reveal, what they hide, and when a conclusion built on them can be trusted.
 
 ## Learning Resources Used
-- OpenIntro Statistics — numerical summaries, distributions, variability, and association between variables
-- Khan Academy Statistics and Probability — mean, median, standard deviation, IQR, distributions, scatter plots
-- NIST Engineering Statistics Handbook — Exploratory Data Analysis overview and graphical methods
-- StatQuest — supplementary videos on variance, standard deviation, correlation, histograms, and box plots
+- OpenIntro Statistics - numerical summaries, distributions, variability, and association between variables
+- Khan Academy Statistics and Probability - mean, median, standard deviation, IQR, distributions, scatter plots
+- NIST Engineering Statistics Handbook - Exploratory Data Analysis overview and graphical methods
+- StatQuest - supplementary videos on variance, standard deviation, correlation, histograms, and box plots
 
 ## Final Submitted Report
 `task_8/Task8_<FullName>.pdf`
