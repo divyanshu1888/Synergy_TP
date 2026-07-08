@@ -1,0 +1,43 @@
+{
+    "total_students": 11,
+    "duplicate_rows": 1,
+    "missing_values": {
+        "student_id": 0,
+        "name": 0,
+        "domain": 0,
+        "attendance_percent": 1,
+        "score": 1,
+        "study_hours": 0,
+        "height": 0,
+        "weight": 1,
+        "submitted": 0
+    },
+    "average_attendance": 60.4,
+    "average_score": 5.11,
+    "highest_score": 10.0,
+    "lowest_score": 0.0,
+    "submitted_students": 8,
+    "not_submitted": 3,
+    "students_per_domain": {
+        "ML": 2,
+        "web": 2,
+        "ml": 1,
+        "Web Dev": 1,
+        "electronics": 1,
+        "MACHINE LEARNING": 1,
+        "Mechanical": 1,
+        "Electronics": 1,
+        "web development": 1
+    },
+    "average_score_by_domain": {
+        "Electronics": NaN,
+        "MACHINE LEARNING": 7.0,
+        "ML": 5.0,
+        "Mechanical": 0.0,
+        "Web Dev": 6.0,
+        "electronics": NaN,
+        "ml": 8.0,
+        "web": 4.0,
+        "web development": 7.0
+    }
+}
