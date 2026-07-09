@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 
 def add_rolling_average(df):
-    # Sort chronologically within each experimental group to compute the rolling window accurately
     df = df.copy()
     df = df.sort_values(by=['domain', 'condition', 'time_step'])
     
@@ -72,7 +71,7 @@ def add_ml_readiness_flag(df, replicate_summary):
     df['condition'].notna()
 )
     
-    df['stability_flag'] = merged['stability_flag']
+    df['stability_flag'] = merged['stability_flag'].values
     df['ml_ready'] = has_required_data & (df['stability_flag'] == 'stable')
     return df
 
