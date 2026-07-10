@@ -135,7 +135,6 @@ python src/main.py data/calibration_measurements.csv output
 
 ## Packages Used
 
-- Python 3
 - Pandas
 - NumPy
 - SciPy
