@@ -15,9 +15,6 @@ on understanding what these numbers actually reveal, what they hide, and when a 
 - NIST Engineering Statistics Handbook - Exploratory Data Analysis overview and graphical methods
 - StatQuest - supplementary videos on variance, standard deviation, correlation, histograms, and box plots
 
-## Final Submitted Report
-`task_8/Task8_<FullName>.pdf`
-
 ## What I Learned
 Working through this task made it clear that a summary number is only half the story - the same mean can come from completely different underlying 
 data, and without checking sample size, units, and context, a technically correct statistic can still be misleading. The outliers section was the 
